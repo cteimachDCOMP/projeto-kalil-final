@@ -10,4 +10,5 @@ Já que eu e juliana não possuimos conhecimento na área de frontend/Git, decid
 * Entender e experimentar o Git e Github para que não hajam problemas futuros decorrrentes de algum mal uso da ferramenta.(esse README faz parte disso)
 
 A ideia é que no começo da semana, já tenhamos algo em prática. ^^
+
 _Cauan T. Machado_
