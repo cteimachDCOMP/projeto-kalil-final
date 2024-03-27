@@ -12,3 +12,15 @@ Já que eu e juliana não possuimos conhecimento na área de frontend/Git, decid
 A ideia é que no começo da semana, já tenhamos algo em prática. ^^
 
 _Cauan T. Machado_
+
+## 26/03/2024
+
+Questoes usadas no projeto
+
+* Atleta que ganhou a maior quantidade de medalhas
+* O ranking dos top 10 paises
+* Esportes que *PAIS* ganhou *MEDALHA*
+* Atleta mais novo a ganha *MEDALHA*
+* Quantas medalhas o Brasil tem em *ESPORTE*
+
+_Juliana P. Matos_
