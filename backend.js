@@ -2,17 +2,17 @@ const fs = require('fs');
 const csv = require('csv-parser');
 
 // Função para ler o arquivo CSV
-const lerCSV = (caminhoArquivo, callback) => {
+const lerCSV = (caminhoArquivo) => {
     fs.createReadStream(caminhoArquivo)
         .pipe(csv())
         .on('data', (linha) => {
-            callback(null, linha);
+            processarLinhas(linha);
         })
         .on('end', () => {
-            callback(null, null); // Indica o fim do arquivo
+            console.log('Fim do arquivo CSV.');
         })
         .on('error', (error) => {
-            callback(error, null);
+            console.error('Erro ao ler o arquivo CSV:', error);
         });
 };
 
@@ -22,13 +22,4 @@ const processarLinhas = (linha) => {
 };
 
 // Exemplo de uso das funções
-lerCSV('athlete_events.csv', (error, linha) => {
-    if (error) {
-        console.error('Erro ao ler o arquivo CSV:', error);
-    } else if (linha !== null) {
-        processarLinhas(linha);
-    } else {
-        console.log('Fim do arquivo CSV.');
-    }
-});
-
+lerCSV('athlete_events.csv');
