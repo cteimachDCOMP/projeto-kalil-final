@@ -17,11 +17,11 @@ _Cauan T. Machado_
 
 Questoes usadas no projeto
 
-* Atleta que ganhou a maior quantidade de medalhas
-* O ranking dos top 10 paises
-* Esportes que *PAIS* ganhou *MEDALHA*
-* Atleta mais novo a ganha *MEDALHA*
-* Quantas medalhas o Brasil tem em *ESPORTE*
+1. Atleta que ganhou a maior quantidade de medalhas
+2. O ranking dos top 10 paises
+3. Esportes que *PAIS* ganhou *MEDALHA*
+4. Atleta mais novo a ganha *MEDALHA*
+5. Quantas medalhas o Brasil tem em *ESPORTE*
 
 _Juliana P. Matos_
 
