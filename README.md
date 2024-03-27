@@ -20,7 +20,7 @@ Questoes usadas no projeto
 1. Atleta que ganhou a maior quantidade de medalhas
 2. O ranking dos top 10 paises
 3. Esportes que *PAIS* ganhou *MEDALHA*
-4. Atleta mais novo a ganha *MEDALHA*
+4. Atleta mais novo a ganhar *MEDALHA*
 5. Quantas medalhas o Brasil tem em *ESPORTE*
 
 _Juliana P. Matos_
@@ -32,5 +32,12 @@ _Juliana P. Matos_
 -> cvs-parse adicionado
 
 -> Inicio da estrutura do HTML/CSS
+
+_Cauan T. Machado_
+
+### 27/03/2024 (noite)
+
+* Código que lê o arquivo .cvs corrigido 
+* Criadas as funções para resolver as perguntas (3,4,5). -> Falta comentar e refatorar.
 
 _Cauan T. Machado_
