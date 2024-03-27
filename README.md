@@ -24,3 +24,11 @@ Questoes usadas no projeto
 * Quantas medalhas o Brasil tem em *ESPORTE*
 
 _Juliana P. Matos_
+
+## 27/03/2024
+
+-> Código que transforma o .csv em registro adicionado ao backend.js
+-> cvs-parse adicionado
+-> Inicio da estrutura do HTML/CSS
+
+_Cauan T. Machado_
