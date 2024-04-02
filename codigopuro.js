@@ -40,29 +40,36 @@ const lerCSV = (caminhoArquivo) => {
             return somatotal;
         }
 
-
-        const maisNovoMedalhista = () => { // retorna o atleta do registro com a menor idade que possui no mínimo 1 medalha.
+        const maisNovoMedalhista = (soMedalhistas) => { // retorna o atleta do registro com a menor idade que possui no mínimo 1 medalha.
         const menor = (x,y) => x < y ? x : y;
         const maisNovoMedalhistaAUX = (soMedalhistas.map((x) => parseInt(x.Age))).reduce(menor,100);// encontra a menor idade registrada dentre os medalhistas.
         const maisNovo = soMedalhistas.find((x) => maisNovoMedalhistaAUX === parseInt(x.Age)); // encontra o atleta que possui a idade encontrada anteriormente.
         const resposta = (`Nome : ${maisNovo.Name}\nIdade: ${maisNovo.Age}`); // exibe o primeiro atleta do registro que possui as características acima.
-        document.getElementById("output1").value = resposta;
+        console.log(resposta);
        }
        
-        const esportesPaisMedalha = () => {
-        const pais = (document.getElementById("input2").value).toUpperCase()
-        const listaesportes = (soMedalhistas.filter((x) => (x.Team).toUpperCase() == pais)).map((x) => x.Sport); // filtra os esportes em que o determinado pais ganhou medalhas.
+       maisNovoMedalhista(soMedalhistas);
+       console.log('---------------------------------------------------');
+
+        const esportesPaisMedalha = (pais) => {
+
+        const listaesportes = (soMedalhistas.filter((x) => x.Team == pais)).map((x) => x.Sport); // filtra os esportes em que o determinado pais ganhou medalhas.
         const registroFormatado = eliminaRepeticoes(listaesportes);
         const exibeEsportes = registroFormatado.sort().join('\n'); // retira os elementos da lista e organiza em ordem alfabetica.
-        document.getElementById("output2").value = exibeEsportes;
+        console.log(exibeEsportes);
        }
+
        
-        const brasilEsporteMedalhistas = () => {
-        const esporte = (document.getElementById("input3").value).toUpperCase()
-        const brasilEsporteMedalhistasAUX = ((soMedalhistas.filter(((x) => (x.Sport).toUpperCase() == esporte))).filter((x) => x.Team == 'Brazil')).map((x) => 1); // encontra quantas medalhas o Brasil ganhou em determinado esporte.
-        const total = somatorio(brasilEsporteMedalhistasAUX);
-        document.getElementById("output3").value = total;
+       esportesPaisMedalha('Brazil');
+       console.log('---------------------------------------------------');
+       
+        const brasilEsporteMedalhistas = (esporte) => {
+        const brasilEsporteMedalhistasAUX = ((soMedalhistas.filter(((x) => x.Sport == esporte))).filter((x) => x.Team == 'Brazil')).map((x) => 1); // encontra quantas medalhas o Brasil ganhou em determinado esporte
+        console.log(somatorio(brasilEsporteMedalhistasAUX))
        }
+
+       brasilEsporteMedalhistas('Football');
+       console.log('---------------------------------------------------');
     
        const calcularRanking = (registro) => { // função gerada em gpt-3.5 e modificada para o paradigma funcional por Cauan T. Machado
         const medalhasPorPais = registro.reduce((acc, atleta) => { // calcula quantas medalhas (com distinção entre ouro, prata e bronze) cada país obteve 
@@ -115,20 +122,20 @@ const lerCSV = (caminhoArquivo) => {
       const nono = top10Paises[8];
       const decimo = top10Paises[9];
 
-      const rankingFormatado = () => {
-        const tabela = (`1º: ${primeiro}\n2º: ${segundo}\n3º: ${terceiro}\n4º: ${quarto}\n5º: ${quinto}\n6º: ${sexto}\n7º: ${setimo}\n8º: ${oitavo}\n9º: ${nono}\n10º: ${decimo}\n`);    
-        document.getElementById("output5").value = tabela;
-      }
+      const rankingformatado = () => console.log(`1º: ${primeiro}\n2º: ${segundo}\n3º: ${terceiro}\n4º: ${quarto}\n5º: ${quinto}\n6º: ${sexto}\n7º: ${setimo}\n8º: ${oitavo}\n9º: ${nono}\n10º: ${decimo}\n`);    
+      
+      rankingformatado();
+      console.log('---------------------------------------------------');
       
 
-      infoSobreAtleta = () =>{
-        const nome = document.getElementById("input4").value;
-        const registroAtleta = soLondres.filter((atleta) => (atleta.Name).toUpperCase() == nome); // armazena apenas o atleta que se deseja obter os dados.
+    infoSobreAtleta = (nome) =>{
+        const registroAtleta = soLondres.filter((atleta) => atleta.Name == nome); // armazena apenas o atleta que se deseja obter os dados.
         const soAtleta = registroAtleta[0]; // elimina outros possiveis registros
         const atletaSexo = soAtleta.Sex == 'M' ? 'Masculino' : 'Feminino'
-        const infoFormatada = (`Nome: ${soAtleta.Name}\nIdade: ${soAtleta.Age}\nSexo: ${atletaSexo}\nAltura: ${soAtleta.Height} Cm\nMassa: ${soAtleta.Weight} Kg\nEsporte: ${soAtleta.Sport}\n`);
-        document.getElementById("output4").value = infoFormatada;
+        console.log(`Nome: ${soAtleta.Name}\nIdade: ${soAtleta.Age}\nSexo: ${atletaSexo}\nAltura: ${soAtleta.Height} Cm\nMassa: ${soAtleta.Weight} Kg\nEsporte: ${soAtleta.Sport}\n`);
     }
+
+    infoSobreAtleta('Taylor Phinney');
 
     } catch (error) {
         console.error('Erro ao ler o arquivo CSV:', error);

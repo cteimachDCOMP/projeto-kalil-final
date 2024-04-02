@@ -1,3 +1,51 @@
+/* CSS base gerado com gpt-3.5 e modificado por Cauan Teixeira Machado.*/
+
+body {
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif;
+}
+
+h1, h2 {
+    color: #00247d; /* Azul escuro */
+}
+
+button {
+    
+    background-color: #cf142b; /* Vermelho */
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transição suave da cor de fundo */
+}
+
+button:hover {
+    background-color: #a8071a; /* Vermelho escuro ao passar o mouse */
+}
+
+input[type="text"] {
+    padding: 5px;
+    border: 1px solid #00247d; /* Azul escuro */
+}
+
+/* Estilo da caixa */
+.boxed {
+    border: 2px solid #00247d; /* Azul escuro */
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* Estilo do subtítulo */
+h2 {
+    color: #00247d; /* Azul escuro */
+}
+
+/* Aplicar estilo da caixa apenas aos subtítulos */
+h2.boxed {
+    border-radius: 5px; /* Borda arredondada */
+}
+
 #titulo{
     text-align: center;
 }

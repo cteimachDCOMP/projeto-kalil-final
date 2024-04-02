@@ -17,11 +17,11 @@ _Cauan T. Machado_
 
 Questoes usadas no projeto
 
-1. Atleta que ganhou a maior quantidade de medalhas
-2. O ranking dos top 10 paises
-3. Esportes que *PAIS* ganhou *MEDALHA*
-4. Atleta mais novo a ganhar *MEDALHA*
-5. Quantas medalhas o Brasil tem em *ESPORTE*
+1. Informações sobre atleta x.
+2. O ranking dos top 10 paises.
+3. Esportes que determinado país ganhou 
+4. Atleta mais novo a ganhar medalha.
+5. Quants medalhistas o Brasil tem em determinado esporte?
 
 _Juliana P. Matos_
 
@@ -39,5 +39,11 @@ _Cauan T. Machado_
 
 * Código que lê o arquivo .cvs corrigido 
 * Criadas as funções para resolver as perguntas (3,4,5). -> Falta comentar e refatorar.
+
+_Cauan T. Machado_
+
+## 02/04/2024
+
+Projeto "finalizado".
 
 _Cauan T. Machado_

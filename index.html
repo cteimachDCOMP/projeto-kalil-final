@@ -1,27 +1,41 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel = "stylesheet" href="./style.css">
-    <script src="./backend.js" type="text/javascript" defer></script>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LONDRES 2012</title>
+    <title>Jogos Olímpicos de Londres 2012</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <h1 id="titulo">Olimpiada Londres 2012</h1>
-    <p1 id="informacoes sobre o evento">Olimpiada ocorrida entre 27 de julho e 12 de agosto...</p1>
-    <label for="questoes">Fatos curiosos:</label>
-    <select id="questoes" onchange="">
-        <option value="esportesPaisMedalha">questao1</option>
-        <option value="brasilEsporteMedalhas">questao2</option>
-        <option value="maisNovoMedalhista">questao3</option>
-        <option value="atletaMaisMedalhas">questao4</option>
-        <option value="top10Paises">questao5</option>
-    </select>
+    <script type="module" src="./backend.js"></script>
+    <h1 id="titulo">Jogos Olímpicos de Londres 2012</h1>
 
-    <script>
+    <div class="boxed">
+        <h2>Atleta mais novo a ganhar uma medalha</h2>
+        <button onclick="maisNovoMedalhista()">Executar</button></div><br>
+    <div><span id="output1"></span></div><br><br>
 
-    </script>
+    <div class="boxed">
+        <h2>Quais esportes em que o determinado país ganhou medalhas?</h2>
+        <span>Digite aqui o país que deseja pesquisar (em Inglês): <input id="input2" type="text"></span>
+        <button onclick="esportesPaisMedalha()">Executar</button></div><br>
+    <div><span id="output2"></span></div><br><br>
 
+    <div class="boxed">
+        <h2>Número de medalhistas do Brasil em determinado esporte</h2>
+        <span>Digite aqui o esporte que deseja pesquisar (em Inglês): <input id="input3" type="text"></span>
+        <button onclick="brasilEsporteMedalhistas()">Executar</button></div><br>
+    <div><span id="output3"></span></div><br><br>
+
+    <div class="boxed">
+        <h2>Informações sobre um determinado atleta.</h2>
+        <span>Digite aqui o nome do atleta desejado: <input id="input4" type="text"></span>
+        <button onclick="infoSobreAtleta()">Executar</button></div><br>
+    <div><span id="output4"></span></div><br><br>
+
+    <div class="boxed"><h2>Ranking dos países (TOP 10)</h2>
+        <button onclick="rankingFormatado()">Executar</button></div><br>
+    <div><span id="output5"></span></div><br><br>
 </body>
 </html>
