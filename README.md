@@ -19,9 +19,9 @@ Questoes usadas no projeto
 
 1. Informações sobre atleta x.
 2. O ranking dos top 10 paises.
-3. Esportes que determinado país ganhou 
+3. Esportes que determinado país ganhou medalhas.
 4. Atleta mais novo a ganhar medalha.
-5. Quants medalhistas o Brasil tem em determinado esporte?
+5. Quantos medalhistas o Brasil tem em determinado esporte?
 
 _Juliana P. Matos_
 
