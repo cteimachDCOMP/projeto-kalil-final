@@ -32,33 +32,33 @@
             const data = await response.json();
 
 
-            function filterNestedDictionary(obj, condicao) {
+            const filterNestedDictionary = (obj, condicao) => {
                 return Object.fromEntries(
                     Object.entries(obj).filter(([key, nestedObj]) => condicao(key, nestedObj))
                 );
-            }
+            };
 
-            function mapNestedDictionary(obj, func) {
+            const mapNestedDictionary = (obj, func) => {
                 return Object.fromEntries(
                     Object.entries(obj).map(([key, nestedObj]) => [key, func(key, nestedObj)]) 
                     
                 );
 
-            }
+            };
 
-            function reduceNestedDictionary(obj, func, valorInicial) {
+            const reduceNestedDictionary = (obj, func, valorInicial) => {
                 return Object.fromEntries(
                     Object.entries(obj).reduce(([key, nestedObj]) => [key, func(nestedObj)], valorInicial)
                 );
                     
-            }
+            };
 
 
-            function findNestedDictionary(obj, condicao) {
+            const findNestedDictionary = (obj, condicao) => {
                 return Object.fromEntries(
                     Object.entries(obj).find(([key, nestedObj]) => [key, condicao(key, nestedObj)])
                 );
-            } 
+            }; 
 
 
             // Filtra o registro para armazenar apenas os atletas que participaram da olimpíada de Londres 2012        
@@ -74,7 +74,7 @@
                     
                     const menor = (x,y) => x < y ? x : y;
                     const parseIntDicionario = (soMedalhistas) => mapNestedDictionary(soMedalhistas(soLondres), (key, nestedObj) => parseInt(nestedObj.Age));
-                    const parseCompleto = parseIntDicionario(soMedalhistas)
+                    const parseCompleto = parseIntDicionario(soMedalhistas);
                     // encontra a menor idade registrada dentre os medalhistas.s
                     const maisNovoMedalhistaAUX = (soMedalhistas) => { 
                         return Object.entries(parseIntDicionario(soMedalhistas)).reduce((acc, [key, value]) => menor(acc, value), Infinity);
@@ -82,16 +82,16 @@
                     }
 
                     const maisNovoNome = (maisNovoMedalhistaAUX) => {
-                        const atletaMaisNovo = maisNovoMedalhistaAUX(soMedalhistas)
+                        const atletaMaisNovo = maisNovoMedalhistaAUX(soMedalhistas);
                         // encontra a ID do atleta que possui a idade encontrada anteriormente.
                         const identidadeEIdade = (parseCompleto) => Object.entries(parseCompleto).find(([key, value]) => value === atletaMaisNovo);
-                        const apenasIdentidade = identidadeEIdade(parseCompleto)[0]
-                        const soMedalhistasAUX  = soMedalhistas(soLondres)
+                        const apenasIdentidade = identidadeEIdade(parseCompleto)[0];
+                        const soMedalhistasAUX  = soMedalhistas(soLondres);
                         const resultadoAUX = (soMedalhistasAUX) => Object.entries(soMedalhistasAUX).find(([key, value]) => key === apenasIdentidade);
                         // encontra apenas os dados do atleta que possui a idade encontrada anteriormente
                         const resultado = resultadoAUX(soMedalhistasAUX)[1];
                         // encontra o nome do atleta que possui a idade encontrada anteriormente.
-                        return resultado.Name
+                        return resultado.Name;
 
                     }
 
@@ -101,7 +101,13 @@
             };
 
 
-            
+            const esportesPaisMedalha = () => {
+                const pais = (document.getElementById("input2").value).toUpperCase()
+                const listaesportes = (soMedalhistas.filter((x) => (x.Team).toUpperCase() == pais)).map((x) => x.Sport); // filtra os esportes em que o determinado pais ganhou medalhas.
+                const registroFormatado = eliminaRepeticoes(listaesportes);
+                const exibeEsportes = registroFormatado.sort().join('\n'); // retira os elementos da lista e organiza em ordem alfabetica.
+                document.getElementById("output2").value = exibeEsportes;
+            };
 
     
             
@@ -111,7 +117,7 @@
             //FUNCOESDECADABOTAO:
             maisNovoMedalhista(soMedalhistas)
     
-            
+
 
           } catch (error) {
             console.error('Error:', error.message);
