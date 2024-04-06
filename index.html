@@ -6,15 +6,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogos Olímpicos de Londres 2012</title>
     <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-    <script type="module" src="./backend.js"></script>
+    <!-- <script type="module" src="./backend.js"></script> -->
     <h1 id="titulo">Jogos Olímpicos de Londres 2012</h1>
+
+
 
     <div class="boxed">
         <h2>Qual o atleta mais novo a ganhar uma medalha?</h2>
-        <button onclick="maisNovoMedalhista()">Executar</button></div><br>
-    <div><span id="output1"></span></div><br><br>
+        <button id='loadCsvButton'>Executar</button></div><br>
+        <div id="csvData"></div>
+    <!-- <div><span id="output1"></span></div><br><br> -->
+
+    <script>
+        document.getElementById('loadCsvButton').addEventListener('click', loadCSVData);
+    
+        async function loadCSVData() {
+          try {
+            const response = await fetch('/csvdata');
+            if (!response.ok) {
+              throw new Error('Failed to fetch CSV data');
+            }
+            const data = await response.json();
+
+
+            function filterNestedDictionary(obj, condicao) {
+                return Object.fromEntries(
+                    Object.entries(obj).filter(([key, nestedObj]) => condicao(key, nestedObj))
+                );
+            }
+
+            function mapNestedDictionary(obj, func) {
+                return Object.fromEntries(
+                    Object.entries(obj).map(([key, nestedObj]) => [key, func(key, nestedObj)]) 
+                    
+                );
+
+            }
+
+            function reduceNestedDictionary(obj, func, valorInicial) {
+                return Object.fromEntries(
+                    Object.entries(obj).reduce(([key, nestedObj]) => [key, func(nestedObj)], valorInicial)
+                );
+                    
+            }
+
+
+            function findNestedDictionary(obj, condicao) {
+                return Object.fromEntries(
+                    Object.entries(obj).find(([key, nestedObj]) => [key, condicao(key, nestedObj)])
+                );
+            } 
+
+
+            // Filtra o registro para armazenar apenas os atletas que participaram da olimpíada de Londres 2012        
+            const soLondres = (data) => filterNestedDictionary(data, (key, nestedObj) => nestedObj.Year == '2012');
+            // Filtra o registro, apenas com os atletas da olimpíada de Londres 2012, que ganharam medalha        
+            const soMedalhistas = (soLondres) => filterNestedDictionary(soLondres(data), (key, nestedObj) => nestedObj.Medal != 'NA')
+        
+            //QUESTAO1
+            const maisNovoMedalhista = (soMedalhistas) => { // retorna o atleta do registro com a menor idade que possui no mínimo 1 medalha.
+                const csvDiv = document.getElementById('csvData');
+                csvDiv.innerHTML = '';
+
+                    
+                    const menor = (x,y) => x < y ? x : y;
+                    const parseIntDicionario = (soMedalhistas) => mapNestedDictionary(soMedalhistas(soLondres), (key, nestedObj) => parseInt(nestedObj.Age));
+                    const parseCompleto = parseIntDicionario(soMedalhistas)
+                    // encontra a menor idade registrada dentre os medalhistas.s
+                    const maisNovoMedalhistaAUX = (soMedalhistas) => { 
+                        return Object.entries(parseIntDicionario(soMedalhistas)).reduce((acc, [key, value]) => menor(acc, value), Infinity);
+                    
+                    }
+
+                    const maisNovoNome = (maisNovoMedalhistaAUX) => {
+                        const atletaMaisNovo = maisNovoMedalhistaAUX(soMedalhistas)
+                        // encontra a ID do atleta que possui a idade encontrada anteriormente.
+                        const identidadeEIdade = (parseCompleto) => Object.entries(parseCompleto).find(([key, value]) => value === atletaMaisNovo);
+                        const apenasIdentidade = identidadeEIdade(parseCompleto)[0]
+                        const soMedalhistasAUX  = soMedalhistas(soLondres)
+                        const resultadoAUX = (soMedalhistasAUX) => Object.entries(soMedalhistasAUX).find(([key, value]) => key === apenasIdentidade);
+                        // encontra apenas os dados do atleta que possui a idade encontrada anteriormente
+                        const resultado = resultadoAUX(soMedalhistasAUX)[1];
+                        // encontra o nome do atleta que possui a idade encontrada anteriormente.
+                        return resultado.Name
+
+                    }
+
+                    const rowDiv = document.createElement('div');
+                rowDiv.textContent = (`Nome : ${/*maisNovo.Name*/JSON.stringify(maisNovoNome(maisNovoMedalhistaAUX))}\nIdade: ${/*maisNovo.Age*/maisNovoMedalhistaAUX(soMedalhistas)}`);
+                csvDiv.appendChild(rowDiv);
+            };
+
+
+            
+
+    
+            
+
+
+
+            //FUNCOESDECADABOTAO:
+            maisNovoMedalhista(soMedalhistas)
+    
+            
+
+          } catch (error) {
+            console.error('Error:', error.message);
+          }
+        }
+    
+
+        function displayCSV(data) {
+          const csvDiv = document.getElementById('csvData');
+          csvDiv.innerHTML = '';
+          // Exercício: O método forEach é impuro, logo não é muito funcional.
+          // Substitua-o por um método puro que dê no mesmo resultado.
+          data.forEach(row => {
+            const rowDiv = document.createElement('div');
+            rowDiv.textContent = `${row.Name}, ${row.Team}, ${row.Games}`;
+            csvDiv.appendChild(rowDiv);
+          }
+          );
+
+        //Object.keys(data).forEach(key => {
+            //const row = data[key];
+            //const rowDiv = document.createElement('div');
+            //rowDiv.textContent = `${row.Name}, ${row.Team}, ${row.Games}`;
+            //csvDiv.appendChild(rowDiv);
+        //});   
+
+            //const x = Object.entries(data)
+            
+            //const rowDiv = document.createElement('div');
+            //rowDiv.textContent = `${x}`;
+            //csvDiv.appendChild(rowDiv);
+          
+        }
+
+        
+
+      </script>
+
+
 
     <div class="boxed">
         <h2>Quais esportes em que o determinado país ganhou medalhas?</h2>
@@ -37,5 +173,10 @@
     <div class="boxed"><h2>Ranking dos países. (TOP 10)</h2>
         <button onclick="rankingFormatado()">Executar</button></div><br>
     <div><span id="output5"></span></div><br><br>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

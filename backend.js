@@ -23,6 +23,7 @@ const lerCSV = (caminhoArquivo) => {
     });
 };
 
+
 // Exemplo de uso da função
 (async () => {
     try {   //Dentro do try estarão as funções responsáveis por manipular os dadosCSV de acordo com as perguntas elaboradas pela equipe.
