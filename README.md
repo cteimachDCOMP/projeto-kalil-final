@@ -24,7 +24,7 @@ _Cauan T. Machado_
 Questoes usadas no projeto
 
 1. Informações sobre atleta x.
-2. O ranking dos top 10 paises.
+2. Que países participaram?
 3. Esportes que determinado país ganhou medalhas.
 4. Atleta mais novo a ganhar medalha.
 5. Quantos medalhistas o Brasil tem em determinado esporte?
@@ -50,7 +50,7 @@ _Cauan T. Machado_
 
 ## 02/04/2024
 
-Projeto "finalizado".
+
 
 _Cauan T. Machado_
 
