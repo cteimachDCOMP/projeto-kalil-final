@@ -53,3 +53,12 @@ _Cauan T. Machado_
 Projeto "finalizado".
 
 _Cauan T. Machado_
+
+## 04/08/2024
+
+Ao longo da ultima semana:
+* Criacao do server.js com codigo fornecido pelo monito BIKE_DO_ARRASCAETA;
+* Houveram algumas adaptacoes do codigo original para que conseguissem acessar o banco de dados athlete_events.cvs;
+* Adicionado o bootstrap e site estilizado com uso dos seus componentes customizaveis;
+
+_Juliana P. Matos_
