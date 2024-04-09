@@ -61,4 +61,6 @@ Ao longo da ultima semana:
 * Houveram algumas adaptacoes do codigo original para que conseguissem acessar o banco de dados athlete_events.cvs;
 * Adicionado o bootstrap e site estilizado com uso dos seus componentes customizaveis;
 
+Projeto Finalizado!
+Link final: https://6614ae76de6f264eaebe18ec--londres2012.netlify.app/
 _Juliana P. Matos_
