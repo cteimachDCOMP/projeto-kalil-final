@@ -1,4 +1,4 @@
-// server.js
+// codigo fornecido pelo monitor BIKE_DO_ARRASCAETA (usuario no Discord)
 const http = require('http');
 const fs = require('fs');
 const path = require('path');

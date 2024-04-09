@@ -1,4 +1,10 @@
 # O Projeto
+Alunos criadores do site: Cauan Teixeira Machado e Juliana Pimentel Matos
+
+Fizemos esse site (html) baseado nas Olimpiadas de Londres - 2012 pelo interesse e curiosade sobre o evento desse ano em especifico. A intencao do nosso projeto e responder algumas perguntas relacionadas aos atletas, paises participantes, e as modalidades dos jogos. Fizemos isso manipulando, com javascript, o banco de dados "athlete_events.csv" que oferece todas as informacoes necessarias para responder as nossa perguntas. Para estilizar o site, utilizamos css e bootstrap. Como decoracao, escolhemos um tema de gatos nas Olimpiadas de Londres - 2012, pra deixa-lo um pouco mais divertido!
+
+
+# Documentando o projeto:
 
 Decidimos criar esse README para documentar o nosso progresso durante o desenvolvimento do projeto final!!!
 
