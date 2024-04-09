@@ -5,7 +5,19 @@ const path = require('path');
 const csv = require('csv-parser');
 
 const server = http.createServer((req, res) => {
-  if (req.url === '/' && req.method === 'GET') {
+  if (req.url === '/intro.html' && req.method === 'GET') {
+    const filePath = path.join(__dirname, 'intro.html');
+    fs.readFile(filePath, (err, data) => {
+        if (err) {
+            res.writeHead(500, { 'Content-Type': 'text/plain' });
+            res.end('Internal Server Error');
+        } else {
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(data);
+        }
+    });
+
+  } else if (req.url === '/index.html' && req.method === 'GET') {
     const filePath = path.join(__dirname, 'index.html');
     fs.readFile(filePath, (err, data) => {
       if (err) {
